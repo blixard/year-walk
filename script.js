@@ -4,13 +4,13 @@ const months = [
   { name: "March", fact: "The year stopped feeling new.", music: "assets/audio/march.m4a" },
   { name: "April", fact: "Internet humour peaked again.", music: "assets/audio/april.m4a" },
   { name: "May", fact: "Suddenly, everyone wanted to travel.", music: "assets/audio/may.m4a" },
-  { name: "June", fact: "Glow-up season (mostly in reels).", music: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { name: "July", fact: "Rain outside. Reels inside.", music: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { name: "August", fact: "Patriotism + long weekends.", music: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { name: "September", fact: "The 'I'll get serious now' month.", music: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { name: "October", fact: "Best lighting. Worst overthinking.", music: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { name: "November", fact: "Reels asked what you did all year.", music: "https://www.youtube.com/embed/dQw4w9WgXcQ" },
-  { name: "December", fact: "Deadlines arrived faster than memories.", music: "https://www.youtube.com/embed/dQw4w9WgXcQ" }
+  { name: "June", fact: "Glow-up season (mostly in reels).", music: "assets/audio/june.m4a" },
+  { name: "July", fact: "Rain outside. Reels inside.", music: "assets/audio/july.m4a" },
+  { name: "August", fact: "Patriotism + long weekends.", music: "assets/audio/august.m4a" },
+  { name: "September", fact: "The 'I'll get serious now' month.", music: "assets/audio/sept.m4a" },
+  { name: "October", fact: "Best lighting. Worst overthinking.", music: "assets/audio/jan.m4a" },
+  { name: "November", fact: "Reels asked what you did all year.", music: "assets/audio/july.m4a" },
+  { name: "December", fact: "Deadlines arrived faster than memories.", music: "assets/audio/dec.m4a" }
 ];
 
 let visited = new Set();
