@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="progressWrapper">
+  <div id="progressBar"></div>
+</div>
+<div id="doorHint">Continue</div>
+<div id="softHint">
+  Take your time. There’s more ahead.
+</div>
+
 
 <section id="intro" class="screen active">
   <h1>Walk Through 2025</h1>
@@ -22,6 +30,7 @@
 <div id="modal" class="modal">
   <div class="modal-content">
     <h3 id="modalMonth"></h3>
+    <br>
     <p id="modalFact"></p>
     <audio id="bgAudio"></audio>
     <button class="close" onclick="closeModal()">Close</button>

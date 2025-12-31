@@ -1,16 +1,17 @@
+
 const months = [
-  { name: "January", fact: "The month where resolutions were still alive.", music: "assets/audio/jan.m4a" },
-  { name: "February", fact: "Valentine's Day passed. Memes stayed.", music: "assets/audio/feb.m4a" },
-  { name: "March", fact: "The year stopped feeling new.", music: "assets/audio/march.m4a" },
-  { name: "April", fact: "Internet humour peaked again.", music: "assets/audio/april.m4a" },
-  { name: "May", fact: "Suddenly, everyone wanted to travel.", music: "assets/audio/may.m4a" },
-  { name: "June", fact: "Glow-up season (mostly in reels).", music: "assets/audio/june.m4a" },
-  { name: "July", fact: "Rain outside. Reels inside.", music: "assets/audio/july.m4a" },
-  { name: "August", fact: "Patriotism + long weekends.", music: "assets/audio/august.m4a" },
-  { name: "September", fact: "The 'I'll get serious now' month.", music: "assets/audio/sept.m4a" },
-  { name: "October", fact: "Best lighting. Worst overthinking.", music: "assets/audio/jan.m4a" },
-  { name: "November", fact: "Reels asked what you did all year.", music: "assets/audio/july.m4a" },
-  { name: "December", fact: "Deadlines arrived faster than memories.", music: "assets/audio/dec.m4a" }
+  { name: "January", highlights:["abc", "def", "ghi"], fact: "The month where resolutions were still alive.", music: "assets/audio/jan.m4a" },
+  { name: "February", highlights:["abcddddddddddddddddddddddd", "def", "ghi"], fact: "Valentine's Day passed. Memes stayed.", music: "assets/audio/feb.m4a" },
+  { name: "March", highlights:["abc", "def", "ghi"], fact: "The year stopped feeling new.", music: "assets/audio/march.m4a" },
+  { name: "April", highlights:["abc", "def", "ghi"], fact: "Internet humour peaked again.", music: "assets/audio/april.m4a" },
+  { name: "May", highlights:["abc", "def", "ghi"], fact: "Suddenly, everyone wanted to travel.", music: "assets/audio/may.m4a" },
+  { name: "June", highlights:["abc", "def", "ghi"], fact: "Glow-up season (mostly in reels).", music: "assets/audio/june.m4a" },
+  { name: "July", highlights:["abc", "def", "ghi"], fact: "Rain outside. Reels inside.", music: "assets/audio/july.m4a" },
+  { name: "August", highlights:["abc", "def", "ghi"], fact: "Patriotism + long weekends.", music: "assets/audio/august.m4a" },
+  { name: "September", highlights:["abc", "def", "ghi"], fact: "The 'I'll get serious now' month.", music: "assets/audio/sept.m4a" },
+  { name: "October", highlights:["abc", "def", "ghi"], fact: "Best lighting. Worst overthinking.", music: "assets/audio/jan.m4a" },
+  { name: "November", highlights:["abc", "def", "ghi"], fact: "Reels asked what you did all year.", music: "assets/audio/july.m4a" },
+  { name: "December", highlights:["abc", "def", "ghi"], fact: "Deadlines arrived faster than memories.", music: "assets/audio/dec.m4a" }
 ];
 
 let visited = new Set();
@@ -49,14 +50,24 @@ function openMonth(index) {
   visited.add(index);
   document.getElementById("modalMonth").innerText = m.name;
   document.getElementById("modalFact").innerText = m.fact;
+  const factBox = document.getElementById("modalFact");
+  factBox.innerHTML = `
+    <ul>
+      ${m.highlights.map(h => `<li>${h}</li>`).join("")}
+    </ul>
+  `;
+  updateProgress();
   currentMusic = m.music;
   document.getElementById("modal").classList.add("show");
   playAudio(m.music);
-
-  if (visited.size === 12) {
-    setTimeout(() => switchScreen("final"), 600);
-  }
+  document.querySelectorAll(".month")[index].classList.add("visited");
 }
+
+function updateProgress() {
+  const percent = (visited.size / months.length) * 100;
+  document.getElementById("progressBar").style.width = percent + "%";
+}
+
 
 function playAudio(src) {
   audio.pause();
@@ -79,7 +90,13 @@ function playAudio(src) {
 
 function closeModal() {
   document.getElementById("modal").classList.remove("show");
-  audio.pause();
+    if (visited.size === 12) {
+    setTimeout(() => switchScreen("final"), 600);
+  }
+  else{
+    audio.pause();
+  }
+  
 }
 
 
