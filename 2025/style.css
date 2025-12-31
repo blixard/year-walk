@@ -1,5 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 
+body, .month {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.month {
+  cursor: crosshair;
+}
+
+.month.hit {
+  box-shadow: 0 0 35px rgba(255,255,255,0.6);
+  transform: scale(1.05);
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -123,6 +140,20 @@ button:hover {
   font-size: 2rem;
   opacity: 0.8;
 }
+
+#aimLine {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.1));
+  pointer-events: none;
+  transform-origin: left center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }

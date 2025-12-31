@@ -20,6 +20,12 @@ const grid = document.getElementById("monthGrid");
 const audio = document.getElementById("bgAudio");
 audio.volume = 0;
 
+let dragStart = null;
+const MIN_DRAG_DISTANCE = 40; // pixels
+const aimLine = document.getElementById("aimLine");
+const monthElements = document.querySelectorAll(".month");
+
+
 
 months.forEach((m, i) => {
   const div = document.createElement("div");
@@ -84,3 +90,163 @@ function playMusic() {
 function openDoor() {
   switchScreen("message");
 }
+
+
+function getPoint(e) {
+  // Touch end uses changedTouches
+  if (e.changedTouches && e.changedTouches.length) {
+    return {
+      x: e.changedTouches[0].clientX,
+      y: e.changedTouches[0].clientY
+    };
+  }
+
+  // Touch start / move
+  if (e.touches && e.touches.length) {
+    return {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    };
+  }
+
+  // Mouse events
+  if (typeof e.clientX === "number") {
+    return {
+      x: e.clientX,
+      y: e.clientY
+    };
+  }
+
+  return null;
+}
+
+
+function startAim(e) {
+  // Ignore right-clicks
+  if (e.button !== undefined && e.button !== 0) return;
+
+  if (e.type === "touchstart") {
+    dragStart = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    };
+  } else {
+    dragStart = {
+      x: e.clientX,
+      y: e.clientY
+    };
+  }
+
+  aimLine.style.opacity = "1";
+}
+
+
+function moveAim(e) {
+  if (!dragStart) return;
+
+  const p = getPoint(e);
+  const dx = p.x - dragStart.x;
+  const dy = p.y - dragStart.y;
+
+  const distance = Math.hypot(dx, dy);
+  const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+  aimLine.style.width = distance + "px";
+  aimLine.style.transform =
+    `translate(${dragStart.x}px, ${dragStart.y}px) rotate(${angle}deg)`;
+
+  clearPreview();
+
+  let bestMatch = null;
+  let smallestDiff = Infinity;
+
+  document.querySelectorAll(".month").forEach((el, index) => {
+    const r = el.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+
+    const cardAngle = Math.atan2(cy - dragStart.y, cx - dragStart.x);
+    let diff = Math.abs(cardAngle - angle);
+    if (diff > Math.PI) diff = (Math.PI * 2) - diff;
+
+    if (diff < smallestDiff) {
+      smallestDiff = diff;
+      bestMatch = index;
+    }
+  });
+
+  if (bestMatch !== null) {
+    document.querySelectorAll(".month")[bestMatch]
+      .classList.add("hit");
+    previewIndex = bestMatch;
+  }
+
+}
+
+
+function endAim(e) {
+  clearPreview();
+
+  if (!dragStart) return;
+
+  const p = getPoint(e);
+  const dx = p.x - dragStart.x;
+  const dy = p.y - dragStart.y;
+
+  const distance = Math.hypot(dx, dy);
+  if (distance < MIN_DRAG_DISTANCE) {
+    dragStart = null;
+    return; // ignore tiny drags / clicks
+  }
+
+
+  aimLine.style.opacity = "0";
+  aimLine.style.width = "0";
+
+  const angle = Math.atan2(dy, dx);
+
+  let bestMatch = null;
+  let smallestAngleDiff = Infinity;
+
+  monthElements.forEach((el, index) => {
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    const cardAngle = Math.atan2(cy - dragStart.y, cx - dragStart.x);
+    let diff = Math.abs(cardAngle - angle);
+    if (diff > Math.PI) diff = (Math.PI * 2) - diff;
+
+
+    if (diff < smallestAngleDiff) {
+      smallestAngleDiff = diff;
+      bestMatch = index;
+    }
+  });
+
+  if (bestMatch !== null) {
+    openMonth(bestMatch);
+  }
+
+  dragStart = null;
+}
+
+let previewIndex = null;
+
+function clearPreview() {
+  if (previewIndex !== null) {
+    document.querySelectorAll(".month")[previewIndex]
+      .classList.remove("hit");
+    previewIndex = null;
+  }
+}
+
+
+document.addEventListener("mousedown", startAim);
+document.addEventListener("mousemove", moveAim);
+document.addEventListener("mouseup", endAim);
+
+document.addEventListener("touchstart", startAim, { passive: true });
+document.addEventListener("touchmove", moveAim, { passive: true });
+document.addEventListener("touchend", endAim);
+
