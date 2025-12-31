@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Walk Through 2025</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="intro" class="screen active">
+  <h1>Walk Through 2025</h1>
+  <p>The year you scrolled, laughed, and lived.</p>
+  <button onclick="enterYear()">Enter</button>
+</section>
+
+<section id="months" class="screen">
+  <h2>Tap a Month</h2>
+  <div class="grid" id="monthGrid"></div>
+</section>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <h3 id="modalMonth"></h3>
+    <p id="modalFact"></p>
+    <audio id="bgAudio"></audio>
+    <button onclick="playMusic()">▶ Play Vibe</button>
+    <button class="close" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<section id="final" class="screen">
+  <div class="door" onclick="openDoor()">
+    <span>2026</span>
+  </div>
+</section>
+
+<section id="message" class="screen">
+  <h1>Welcome to 2026</h1>
+  <p>
+    You laughed. You scrolled. You survived.<br><br>
+    Carry the good.<br>
+    Forgive the rest.<br><br>
+    Walk gently forward.
+  </p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
