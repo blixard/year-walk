@@ -1,18 +1,127 @@
 
 const months = [
-  { name: "January", highlights:["abc", "def", "ghi"], fact: "The month where resolutions were still alive.", music: "assets/audio/jan.m4a" },
-  { name: "February", highlights:["abcddddddddddddddddddddddd", "def", "ghi"], fact: "Valentine's Day passed. Memes stayed.", music: "assets/audio/feb.m4a" },
-  { name: "March", highlights:["abc", "def", "ghi"], fact: "The year stopped feeling new.", music: "assets/audio/march.m4a" },
-  { name: "April", highlights:["abc", "def", "ghi"], fact: "Internet humour peaked again.", music: "assets/audio/april.m4a" },
-  { name: "May", highlights:["abc", "def", "ghi"], fact: "Suddenly, everyone wanted to travel.", music: "assets/audio/may.m4a" },
-  { name: "June", highlights:["abc", "def", "ghi"], fact: "Glow-up season (mostly in reels).", music: "assets/audio/june.m4a" },
-  { name: "July", highlights:["abc", "def", "ghi"], fact: "Rain outside. Reels inside.", music: "assets/audio/july.m4a" },
-  { name: "August", highlights:["abc", "def", "ghi"], fact: "Patriotism + long weekends.", music: "assets/audio/august.m4a" },
-  { name: "September", highlights:["abc", "def", "ghi"], fact: "The 'I'll get serious now' month.", music: "assets/audio/sept.m4a" },
-  { name: "October", highlights:["abc", "def", "ghi"], fact: "Best lighting. Worst overthinking.", music: "assets/audio/jan.m4a" },
-  { name: "November", highlights:["abc", "def", "ghi"], fact: "Reels asked what you did all year.", music: "assets/audio/july.m4a" },
-  { name: "December", highlights:["abc", "def", "ghi"], fact: "Deadlines arrived faster than memories.", music: "assets/audio/dec.m4a" }
+  { 
+    name: "January", 
+    highlights:[
+      "Kumbh Mela 2025 lit up Prayagraj with massive snans, Ganga aartis and smooth crowd management.",
+      "CES 2025 showed off Samsung’s Vision AI TVs and made ‘AI in every screen’ a thing.",
+      "Early ‘good news 2025’ lists talked about conservation and medical wins."
+    ], 
+    fact: "The month where resolutions were still alive.", 
+    music: "assets/audio/jan.m4a" 
+  },
+  { 
+    name: "February", 
+    highlights:[
+      "NASA’s SPHEREx mission launched to map hundreds of millions of galaxies.",
+      "OTT platforms leaned hard into AI dubbing and hyper-personalised streaming.",
+      "Early cricket and football action plus Asian sports events kept fans warmed up."
+    ], 
+    fact: "Valentine's Day passed. Memes stayed.", 
+    music: "assets/audio/feb.m4a" 
+  },
+  { 
+    name: "March", 
+    highlights:[
+      "Agentic AI and AI ‘co-workers’ became the buzzwords of tech.",
+      "Thinkpieces started calling 2025 the year AI stopped being just chatbots.",
+      "Heartwarming stories about social impact and innovation began trending."
+    ], 
+    fact: "The year stopped feeling new.", 
+    music: "assets/audio/march.m4a" 
+  },
+  { 
+    name: "April", 
+    highlights:[
+      "IPL 2025 evenings turned into a festival again across India.",
+      "AI DJs and hyper-personal feeds made apps feel a little too smart.",
+      "Positive climate and science updates showed up in ‘what went right’ posts."
+    ], 
+    fact: "Internet humour peaked again.", 
+    music: "assets/audio/april.m4a" 
+  },
+  { 
+    name: "May", 
+    highlights:[
+      "China’s Tianwen-2 asteroid mission joined the new space race.",
+      "AI startups and mega-deals made 2025 look like peak AI-investment season.",
+      "Forest regrowth and ocean-protection stories added to the year’s good news."
+    ], 
+    fact: "Suddenly, everyone wanted to travel.", 
+    music: "assets/audio/may.m4a" 
+  },
+  { 
+    name: "June", 
+    highlights:[
+      "The NATO summit in the Netherlands dominated security headlines.",
+      "The UN Ocean Conference in Nice pushed for stronger marine protection.",
+      "Medical AI for faster stroke diagnosis became a poster child for ‘AI for good’."
+    ], 
+    fact: "Glow-up season (mostly in reels).", 
+    music: "assets/audio/june.m4a" 
+  },
+  { 
+    name: "July", 
+    highlights:[
+      "The Women’s Cricket World Cup in India filled stadiums with families and schoolkids.",
+      "Fan vlogs from Indian grounds raved about food, noise and atmosphere.",
+      "Science wins around hereditary-disease prevention hit positive-news lists."
+    ], 
+    fact: "Rain outside. Reels inside.", 
+    music: "assets/audio/july.m4a" 
+  },
+  { 
+    name: "August", 
+    highlights:[
+      "India lifted the ICC Women’s World Cup 2025 trophy on home soil.",
+      "A Russia–US summit in Alaska became one of the year’s big geopolitical images.",
+      "The first World Humanoid Robot Games in Beijing went viral for robo-stunts."
+    ], 
+    fact: "Patriotism + long weekends.", 
+    music: "assets/audio/august.m4a" 
+  },
+  { 
+    name: "September", 
+    highlights:[
+      "UNGA’s 80th session in New York put AI, climate and conflicts on the same stage.",
+      "Women’s sports were celebrated globally, with India’s win as a key highlight.",
+      "Good-news lists talked about youth, democracy and community peace efforts."
+    ], 
+    fact: "The 'I'll get serious now' month.", 
+    music: "assets/audio/sept.m4a" 
+  },
+  { 
+    name: "October", 
+    highlights:[
+      "‘A to Z of tech 2025’ recaps explained everything from Agentic AI to Blackwell GPUs.",
+      "Navratri and Durga Puja reels showed Garba, pandals and neon nights across India.",
+      "New biodiversity and nature wins joined the year’s optimistic headlines."
+    ], 
+    fact: "Best lighting. Worst overthinking.", 
+    music: "assets/audio/jan.m4a" 
+  },
+  { 
+    name: "November", 
+    highlights:[
+      "COP30 in the Amazon rainforest became one of the most iconic climate summits.",
+      "The G20 in South Africa spotlighted the Global South and African Union.",
+      "Fresh HIV and asthma treatment progress gave medicine some real good news."
+    ], 
+    fact: "Reels asked what you did all year.", 
+    music: "assets/audio/july.m4a" 
+  },
+  { 
+    name: "December", 
+    highlights:[
+      "The UN World Space Forum wrapped up a packed year of launches and missions.",
+      "‘What went right in 2025’ compilations collected the year’s best feel-good stories.",
+      "Year-end tech recaps crowned 2025 as the year AI properly entered everyday life."
+    ], 
+    fact: "Deadlines arrived faster than memories.", 
+    music: "assets/audio/dec.m4a" 
+  }
 ];
+
 
 let visited = new Set();
 let currentMusic = null;
